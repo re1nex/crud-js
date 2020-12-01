@@ -54,6 +54,7 @@ exports.post = function (req, res) {
     let body = req.params.param;
     if (index >= 0) {
         data[index].body = body;
+        serialize();
         res.send("202 Accepted");
         return;
     }
