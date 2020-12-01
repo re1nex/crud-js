@@ -45,7 +45,18 @@ exports.put = function (req, res) {
 
 exports.post = function (req, res) {
     let id = req.params.id;
+    let index = -1;
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].id == id) {
+            index = i;
+        }
+    }
     let body = req.params.param;
+    if (index >= 0) {
+        data[index].body = body;
+        res.send("202 Accepted");
+        return;
+    }
     let buf = {
         id: id,
         body: body
